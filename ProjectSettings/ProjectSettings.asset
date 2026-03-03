@@ -608,14 +608,14 @@ PlayerSettings:
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Claude_Test_2
+  metroPackageName: Unity2DPlatformer
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: Claude_Test_2
+  metroApplicationDescription: Unity2DPlatformer
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0
@@ -689,7 +689,7 @@ PlayerSettings:
   cloudProjectId: 37aaf30f-de67-4813-a82f-ec87271b7bb9
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Claude_Test_2
+  projectName: Unity2DPlatformer
   organizationId: ozgurbulum5
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
