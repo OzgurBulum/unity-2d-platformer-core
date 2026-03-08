@@ -8,7 +8,7 @@ public class PauseManager : MonoBehaviour
 
     void Start()
     {
-        // Başlangıçta panel kapalı
+        
         if (pausePanel != null)
         {
             pausePanel.SetActive(false);
@@ -17,7 +17,7 @@ public class PauseManager : MonoBehaviour
 
     void Update()
     {
-        // Escape tuşuna basıldığında pause toggle
+        
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             TogglePause();
@@ -30,13 +30,11 @@ public class PauseManager : MonoBehaviour
 
         if (isPaused)
         {
-            // Pause aç
             pausePanel.SetActive(true);
             Time.timeScale = 0f;
         }
         else
         {
-            // Pause kapat (Resume)
             pausePanel.SetActive(false);
             Time.timeScale = 1f;
         }
@@ -51,7 +49,7 @@ public class PauseManager : MonoBehaviour
 
     public void Restart()
     {
-        Time.timeScale = 1f; // TimeScale'i resetle
+        Time.timeScale = 1f; 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
