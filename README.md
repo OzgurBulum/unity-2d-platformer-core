@@ -50,7 +50,7 @@ Check out the [**Releases**](https://github.com/OzgurBulum/unity-2d-platformer-c
 - 💻 Playable builds (macOS)
 - 📝 Changelogs
 
-**Latest:** [v0.1.1 - Week 5 Prototype](https://github.com/OzgurBulum/unity-2d-platformer-core/releases)
+**Latest:** [v0.1.2 - Week 5 Prototype](https://github.com/OzgurBulum/unity-2d-platformer-core/releases)
 
 ## 🛠️ Technical Details
 
