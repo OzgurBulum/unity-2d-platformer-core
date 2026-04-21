@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UIElements.Experimental;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,16 +18,47 @@ public class PlayerMovement : MonoBehaviour
     private float jumpBufferCounter = 0f;
     private bool isGrounded = false;
 
+    private PlayerControls controls;
+    private Vector2 moveInput;
+
+    [Header("Audio")]
+    public AudioClip jumpSound;
+    private AudioSource audioSource;
+    [Header("VFX")]
+    public ParticleSystem jumpParticles;
+
+    private bool mobileLeft = false;
+    private bool mobileRight = false;
+
+    void Awake()
+    {
+       controls = new PlayerControls();
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
+        jumpParticles = GetComponentInChildren<ParticleSystem>();
+    }
+
+    void OnEnable()
+    {
+        controls.Enable();
+    }
+    
+    void OnDisable()
+    {
+        controls.Disable();
     }
 
     void Update()
     {
         CheckGround();
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        moveInput = controls.GamePlay.Move.ReadValue<Vector2>();
+
+        if (controls.GamePlay.Jump.triggered)
         {
             jumpBufferCounter = jumpBufferTime;
         }
@@ -34,7 +67,8 @@ public class PlayerMovement : MonoBehaviour
             jumpBufferCounter -= Time.deltaTime;
         }
 
-        if (Input.GetKeyUp(KeyCode.Space) && rb.linearVelocity.y > 0)
+        // Keyboard jump cut
+        if (controls.GamePlay.Jump.WasReleasedThisFrame() && rb.linearVelocity.y > 0)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpCutMultiplier);
         }
@@ -42,17 +76,10 @@ public class PlayerMovement : MonoBehaviour
 
    void FixedUpdate()
    {
-       float horizontalInput = 0f;
+       float horizontalInput = moveInput.x;
 
-       if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
-       {
-           horizontalInput = 1f;
-       }
-
-       if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
-       {
-           horizontalInput = -1f;
-       }
+        if (mobileLeft) horizontalInput = -1f;
+        if (mobileRight) horizontalInput = 1f;       
 
        float currentSpeed = isGrounded ? speed : speed * airControlMultiplier;
        rb.linearVelocity = new Vector2(horizontalInput * currentSpeed, rb.linearVelocity.y);
@@ -61,8 +88,17 @@ public class PlayerMovement : MonoBehaviour
        {
            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
            jumpBufferCounter = 0f;
-       }
 
+           if (audioSource != null && jumpSound != null)
+            {
+                audioSource.PlayOneShot(jumpSound);
+            }
+            if (jumpParticles != null)
+            {
+                jumpParticles.Play();
+            }
+       }
+       
        if (rb.linearVelocity.y < 0)
        {
            rb.gravityScale = fallMultiplier;
@@ -78,5 +114,27 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
         isGrounded = hit.collider != null;
         Debug.DrawRay(groundCheck.position, Vector2.down * groundCheckDistance, isGrounded ? Color.green : Color.red);
+    }
+
+    public void SetMobileLeft(bool value)
+    {
+        mobileLeft = value;
+    }
+    
+    public void SetMobileRight(bool value)
+    {
+        mobileRight = value;
+    }
+
+    public void SetMobileJump(bool value)
+    {
+        if (value)
+        {
+            jumpBufferCounter = jumpBufferTime;
+        }
+        else if (rb.linearVelocity.y > 0)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpCutMultiplier);
+        }
     }
 }

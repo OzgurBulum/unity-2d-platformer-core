@@ -1,10 +1,18 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour
 {
     public GameObject pausePanel;
     private bool isPaused = false;
+    private PlayerControls controls;
+
+    void Awake()
+    {
+        controls = new PlayerControls();
+        controls.GamePlay.Pause.performed += ctx => TogglePause();
+    }
 
     void Start()
     {
@@ -15,15 +23,16 @@ public class PauseManager : MonoBehaviour
         }
     }
 
-    void Update()
+    void OnEnable()
     {
-        
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            TogglePause();
-        }
+        controls.GamePlay.Enable();
     }
 
+    void OnDisable()
+    {
+        controls.GamePlay.Disable();
+    }
+    
     public void TogglePause()
     {
         isPaused = !isPaused;

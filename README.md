@@ -3,7 +3,7 @@
 A 2D platformer game built with Unity, featuring movement mechanics, jump systems, enemy interactions, collectibles, and HUD.
 
 ![Unity](https://img.shields.io/badge/Unity-6.3_LTS-black?logo=unity)
-![Platform](https://img.shields.io/badge/Platform-macOS%20%7C%20Windows-blue)
+![Platform](https://img.shields.io/badge/Platform-macOS%20%7C%20Windows%20%7C%20Android-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
 ## ✨ Features
@@ -59,7 +59,7 @@ Check out the [**Releases**](https://github.com/OzgurBulum/unity-2d-platformer-c
 - **Physics:** 2D Rigidbody + Collider
 - **Input:** Unity Input System
 - **UI:** TextMeshPro
-- **Platform:** PC (macOS/Windows)
+- **Platform:** PC (macOS/Windows) + Android
 
 ## 🎯 Current Prototype Features
 
@@ -95,7 +95,8 @@ Check out the [**Releases**](https://github.com/OzgurBulum/unity-2d-platformer-c
 | Feb 21, 2026 | Player movement and jump system |
 | Feb 27, 2026 | Variable jump and fall multiplier |
 | Mar 3, 2026 | Pause menu, Input System, WASD support |
-| **Mar 6-8, 2026** | **Enemy patrol, stomp, hazards, coins, HUD** |
+| Mar 6-8, 2026 | Enemy patrol, stomp, hazards, coins, HUD |
+| **Apr 20, 2026** | **Mobile checkpoint - Android build + touch controls** |
 
 ## 🐛 Bug Fixes
 
@@ -108,11 +109,39 @@ Check out the [**Releases**](https://github.com/OzgurBulum/unity-2d-platformer-c
 
 - [x] Enemy AI
 - [x] Collectibles system
+- [x] Mobile checkpoint (Android)
 - [ ] Animation system
 - [ ] Sound effects
 - [ ] Level design
 - [ ] Multiple levels
 - [ ] Power-ups
+
+## 📱 Mobile Checkpoint
+
+**Android Build - April 2026**
+
+- ✅ Android Build Support configured (Unity Hub)
+- ✅ APK generated (`com.freedxdev.platformer`)
+- ✅ Touch controls implemented (LEFT, RIGHT, JUMP buttons)
+- ✅ Canvas Scaler configured (Scale With Screen Size, 1920x1080)
+- ✅ Landscape orientation locked
+- ✅ Platform detection (buttons visible on mobile only, hidden on PC)
+- ✅ Input System integration (keyboard + touch working simultaneously)
+- ✅ Pause/Resume tested
+- ✅ Profiler snapshot analyzed (CPU/Memory stable)
+- ⚠️ Real device test not completed yet (no Android device available)
+
+**Mobile Controls:**
+- Touch LEFT button → Move left
+- Touch RIGHT button → Move right  
+- Touch JUMP button → Jump (variable height based on hold duration)
+- PC keyboard controls remain functional for testing
+
+**Technical Implementation:**
+- `MobileInputHandler.cs` - Touch input handling (IPointerDown/IPointerUp)
+- `PlatformDetection.cs` - Runtime platform detection
+- `PlayerMovement.cs` - Unified input system (keyboard + touch)
+- Mobile buttons scale with screen size (1920x1080 reference)
 
 ## 📝 License
 
