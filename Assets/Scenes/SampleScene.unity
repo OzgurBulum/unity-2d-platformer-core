@@ -828,7 +828,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 975acd23a0e0d471ea09c65ff50848bf, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -873,7 +873,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0009328276, y: -0.013719365}
+  m_Offset: {x: -0.00036343932, y: -0.01371938}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -883,7 +883,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.39657047, y: 0.5340549}
+  m_Size: {x: 0.25398725, y: 0.5340549}
   m_EdgeRadius: 0
 --- !u!212 &455255244
 SpriteRenderer:
@@ -1511,7 +1511,7 @@ Transform:
   m_GameObject: {fileID: 640480805}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0002, y: -0.2659, z: 0}
+  m_LocalPosition: {x: 0, y: -0.2659, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2520,8 +2520,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Coins : 0'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 04a57678f596d4da88000a2ab8a604ba, type: 2}
+  m_sharedMaterial: {fileID: 1579394477205281221, guid: 04a57678f596d4da88000a2ab8a604ba, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2614,9 +2614,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -25}
-  m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -7}
+  m_SizeDelta: {x: 291.4, y: 80.2}
+  m_Pivot: {x: 0, y: 1}
 --- !u!1001 &1406014292
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8758,8 +8758,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -75.000015}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 145.7, y: -102}
+  m_SizeDelta: {x: 291.4, y: 80.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2121234696
 MonoBehaviour:
@@ -8783,8 +8783,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'HP : 3'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 04a57678f596d4da88000a2ab8a604ba, type: 2}
+  m_sharedMaterial: {fileID: 1579394477205281221, guid: 04a57678f596d4da88000a2ab8a604ba, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
