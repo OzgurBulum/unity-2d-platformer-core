@@ -25,7 +25,7 @@ A 2D platformer game built with Unity, featuring movement mechanics, jump system
 - **✨ Visual Effects** - Jump particles, coin particles, damage flash
 
 ### 📱 Mobile Support
-- **📱 Android Build** - APK generated and tested
+- **📱 Android Build** - APK generated and tested on device
 - **🎮 Touch Controls** - On-screen buttons (LEFT, RIGHT, JUMP)
 - **🔍 Platform Detection** - Buttons visible on mobile only
 - **📐 Responsive UI** - Canvas Scaler with landscape orientation
@@ -59,6 +59,7 @@ Check out the [**Releases**](https://github.com/OzgurBulum/unity-2d-platformer-c
 - 📱 Android APK builds
 - 💻 Playable builds (macOS)
 - 📝 Changelogs
+- 📸 Screenshots
 
 **Latest:** [v0.1.3 - Mobile Checkpoint](https://github.com/OzgurBulum/unity-2d-platformer-core/releases)
 
@@ -116,6 +117,7 @@ Check out the [**Releases**](https://github.com/OzgurBulum/unity-2d-platformer-c
 - ✅ Platform detection (buttons hidden on PC)
 - ✅ Canvas Scaler (responsive UI)
 - ✅ Landscape orientation locked
+- ✅ Real device testing completed
 
 ## 📅 Development Timeline
 
@@ -127,7 +129,7 @@ Check out the [**Releases**](https://github.com/OzgurBulum/unity-2d-platformer-c
 | Mar 6-8, 2026 | Enemy patrol, stomp, hazards, coins, HUD |
 | Mar 15-20, 2026 | Event-driven UI, Object pooling |
 | Apr 1-5, 2026 | Sound effects and particle VFX |
-| **Apr 20, 2026** | **Mobile checkpoint - Android build + touch controls** |
+| **Apr 20-22, 2026** | **Mobile checkpoint - Android build + touch controls** |
 
 ## 🐛 Bug Fixes
 
@@ -164,6 +166,7 @@ Check out the [**Releases**](https://github.com/OzgurBulum/unity-2d-platformer-c
 - [x] Touch controls
 - [x] Platform detection
 - [x] Responsive UI
+- [x] Real device testing
 
 ## 🔮 Future Improvements
 
@@ -190,10 +193,7 @@ _This project focused on core 2D platformer mechanics as a learning exercise. Th
 - Input System integration (keyboard + touch working simultaneously)
 - Pause/Resume tested
 - Profiler snapshot analyzed (CPU/Memory stable)
-
-**⚠️ Limitations:**
-- Real device test not completed yet (no Android device available)
-- Tested in Unity Editor with platform detection
+- **Real device testing completed** - APK tested on Android device
 
 **Mobile Controls:**
 - Touch LEFT button → Move left
