@@ -8,12 +8,17 @@ public class PlayerHealth : MonoBehaviour
 
     public static event System.Action<int> OnHealthChanged;
     public static event System.Action OnPlayerDied;
+
     [Header("Audio")]
     public AudioClip hitSound;
     private AudioSource audioSource;
+
     [Header("VFX")]
     public float flashDuration = 0.1f;
+    public float invincibleDuration = 1f; // ← hasar sonrası bekleme süresi
     private SpriteRenderer spriteRenderer;
+    private bool isInvincible = false; // ← bu eklendi
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -21,37 +26,43 @@ public class PlayerHealth : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-    public void TakeDamage(int Damage)
-    {
-        if (audioSource != null && hitSound != null)
-        {
-            audioSource.PlayOneShot(hitSound);
-        }
-        StartCoroutine(DamageFlash());
 
-        currentHealth -= Damage;
+    public void TakeDamage(int damage)
+    {
+        if (isInvincible) return; // ← spam engeli burada
+
+        if (audioSource != null && hitSound != null)
+            audioSource.PlayOneShot(hitSound);
+
+        currentHealth -= damage;
         OnHealthChanged?.Invoke(currentHealth);
-        Debug.Log("Player took damage! Current health: " + currentHealth);
+
         if (currentHealth <= 0)
         {
             Die();
         }
+        else
+        {
+            StartCoroutine(DamageFlash());
+        }
     }
+
     private void Die()
     {
         OnPlayerDied?.Invoke();
-        Debug.Log("Player has died!");
         Destroy(gameObject);
     }
 
-    private System.Collections.IEnumerator DamageFlash()
+    private IEnumerator DamageFlash()
     {
-        if (spriteRenderer != null)
-        {
-            Color originalColor = spriteRenderer.color;
-            spriteRenderer.color = Color.red;
-            yield return new WaitForSeconds(flashDuration);
-            spriteRenderer.color = originalColor;
-        }
+        isInvincible = true;
+
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(flashDuration);
+        spriteRenderer.color = Color.white;
+
+        yield return new WaitForSeconds(invincibleDuration - flashDuration);
+
+        isInvincible = false;
     }
 }
