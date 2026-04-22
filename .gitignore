@@ -100,3 +100,5 @@ InitTestScene*.unity*
 *.mov
 *.mp4
 .DS_Store
+Assets/Cainos/
+Assets/Cainos.meta
