@@ -1,9 +1,9 @@
 # 🎮 Unity 2D Platformer Core
 
-A 2D platformer game built with Unity, featuring movement mechanics, jump systems, enemy interactions, collectibles, sound effects, and mobile support.
+A 2D platformer game built with Unity, featuring movement mechanics, jump systems, enemy interactions, collectibles, sound effects, mobile support, and a complete game flow with main menu and game over screens.
 
 ![Unity](https://img.shields.io/badge/Unity-6.3_LTS-black?logo=unity)
-![Platform](https://img.shields.io/badge/Platform-PC%20%7C%20Android-blue)
+![Platform](https://img.shields.io/badge/Platform-PC%20%7C%20Android%20%7C%20macOS%20%7C%20iOS-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
 ## ✨ Features
@@ -23,12 +23,22 @@ A 2D platformer game built with Unity, featuring movement mechanics, jump system
 - **📊 HUD** - Real-time display of coins and HP
 - **🔊 Sound Effects** - Jump, coin collect, and damage sounds
 - **✨ Visual Effects** - Jump particles, coin particles, damage flash
+- **🏃 Moving Platforms** - Platforms that carry the player between two points
+- **🚩 Checkpoint System** - Save respawn point on contact
+- **🏁 Finish Flag** - Level completion with coin requirement check
+- **☠️ Fall Detection** - Automatic respawn when falling off the level
+- **🌄 Parallax Background** - 5-layer scrolling background
 
-### 📱 Mobile Support
-- **📱 Android Build** - APK generated and tested on device
-- **🎮 Touch Controls** - On-screen buttons (LEFT, RIGHT, JUMP)
-- **🔍 Platform Detection** - Buttons visible on mobile only
-- **📐 Responsive UI** - Canvas Scaler with landscape orientation
+### 🖥️ Game Flow
+- **🎬 Main Menu** - Platform Hero title screen with Play button
+- **💀 Game Over Screen** - Restart and Main Menu buttons on death
+- **🏆 Finish Screen** - Congratulations screen showing coins collected
+
+### 📱 Platform Support
+- **💻 Windows** - Full PC build
+- **🍎 macOS** - Native Mac build
+- **📱 Android** - APK with touch controls
+- **📱 iOS** - iOS build support
 
 ## 🎮 Controls
 
@@ -44,24 +54,26 @@ A 2D platformer game built with Unity, featuring movement mechanics, jump system
 **Gameplay Tips:**
 - Jump on enemies from above to defeat them
 - Avoid touching enemies from the side (you'll take damage!)
-- Collect coins scattered throughout the level
-- Variable jump: Hold jump button longer for higher jumps
+- Collect ALL coins before reaching the finish flag
+- Checkpoints save your progress — fall safely!
+- Moving platforms carry you across gaps
 
 ## 🚀 Quick Start
 
 1. Clone the repository
 2. Open project in Unity 6.3 LTS or newer
-3. Press Play in the Editor
+3. Open the `MainMenu` scene
+4. Press Play in the Editor
 
 ## 📦 Download
 
 Check out the [**Releases**](https://github.com/OzgurBulum/unity-2d-platformer-core/releases) page for:
 - 📱 Android APK builds
-- 💻 Playable builds (macOS)
+- 💻 Windows builds
+- 🍎 macOS builds
 - 📝 Changelogs
-- 📸 Screenshots
 
-**Latest:** [v0.1.3 - Mobile Checkpoint](https://github.com/OzgurBulum/unity-2d-platformer-core/releases)
+**Latest:** [v0.1.4 - Platform Hero](https://github.com/OzgurBulum/unity-2d-platformer-core/releases)
 
 ## 🛠️ Technical Details
 
@@ -71,18 +83,21 @@ Check out the [**Releases**](https://github.com/OzgurBulum/unity-2d-platformer-c
 - **Input:** Unity Input System (new)
 - **UI:** TextMeshPro + Canvas Scaler
 - **Audio:** AudioSource + AudioClip
-- **Platform:** PC (macOS/Windows) + Android
+- **Camera:** Cinemachine
+- **Platform:** Windows + macOS + Android + iOS
 
-## 🎯 Current Prototype Features
+## 🎯 Current Features
 
 ### Player Systems
 - ✅ Movement (WASD/Arrows + Touch)
 - ✅ Variable jump with cut mechanic
-- ✅ Ground detection (Raycast)
+- ✅ Ground detection (3-point Raycast)
 - ✅ Jump buffer (0.1s)
 - ✅ Health system (3 HP)
-- ✅ Death on HP = 0
+- ✅ Death and respawn system
 - ✅ Damage flash effect (red tint)
+- ✅ Invincibility frames after damage
+- ✅ Fall detection and respawn
 
 ### Enemy Systems
 - ✅ Patrol AI (waypoint-based)
@@ -96,6 +111,12 @@ Check out the [**Releases**](https://github.com/OzgurBulum/unity-2d-platformer-c
 - ✅ Coin counter display
 - ✅ Particle effects on collect
 
+### Level Systems
+- ✅ Moving platforms (player carried)
+- ✅ Checkpoint system (respawn points)
+- ✅ Finish flag with coin requirement
+- ✅ Fall detector (auto respawn)
+
 ### Audio & Visual Effects
 - ✅ Jump sound effect
 - ✅ Coin collect sound
@@ -103,18 +124,23 @@ Check out the [**Releases**](https://github.com/OzgurBulum/unity-2d-platformer-c
 - ✅ Jump particle effect
 - ✅ Coin particle effect
 - ✅ Damage flash VFX
+- ✅ Parallax background (5 layers)
 
-### UI/UX
+### UI/UX & Game Flow
+- ✅ Main menu (Platform Hero)
+- ✅ Game Over screen (Restart / Main Menu)
+- ✅ Finish screen (Congratulations + coin count)
 - ✅ Coin counter display
 - ✅ HP display
 - ✅ Pause menu
-- ✅ Real-time HUD updates
+- ✅ Warning message (collect all coins)
 - ✅ Mobile touch buttons (platform-aware)
 
 ### Mobile Features
 - ✅ Android build support
+- ✅ iOS build support
 - ✅ Touch controls (LEFT, RIGHT, JUMP)
-- ✅ Platform detection (buttons hidden on PC)
+- ✅ Platform detection (buttons hidden on PC/Mac)
 - ✅ Canvas Scaler (responsive UI)
 - ✅ Landscape orientation locked
 - ✅ Real device testing completed
@@ -129,15 +155,20 @@ Check out the [**Releases**](https://github.com/OzgurBulum/unity-2d-platformer-c
 | Mar 6-8, 2026 | Enemy patrol, stomp, hazards, coins, HUD |
 | Mar 15-20, 2026 | Event-driven UI, Object pooling |
 | Apr 1-5, 2026 | Sound effects and particle VFX |
-| **Apr 20-22, 2026** | **Mobile checkpoint - Android build + touch controls** |
+| Apr 20-22, 2026 | Mobile checkpoint - Android build + touch controls |
+| **Apr 27, 2026** | **v0.1.4 - Platform Hero - Full game flow, moving platforms, checkpoints, parallax** |
 
 ## 🐛 Bug Fixes
 
-- ✅ Fixed double jump issue with jump buffer system (0.1s)
-- ✅ Improved ground detection with Raycast
+- ✅ Fixed double jump issue with jump buffer system
+- ✅ Improved ground detection with 3-point Raycast
 - ✅ Fixed UI anchor positioning for responsive layout
 - ✅ Fixed enemy patrol child/parent transform issues
 - ✅ Fixed Input System compatibility with Android builds
+- ✅ Fixed invincibility frames (no instant death from enemies)
+- ✅ Fixed coin counter reset on restart
+- ✅ Fixed mobile controls hidden on PC/Mac builds
+- ✅ Fixed jump reliability with simultaneous key inputs
 
 ## ✅ Completed Features
 
@@ -145,7 +176,7 @@ Check out the [**Releases**](https://github.com/OzgurBulum/unity-2d-platformer-c
 - [x] Player movement & controls (keyboard + touch)
 - [x] Variable jump mechanics with jump cut
 - [x] Jump buffer system
-- [x] Ground detection
+- [x] Ground detection (3-point)
 - [x] Pause system
 
 **Gameplay:**
@@ -154,15 +185,27 @@ Check out the [**Releases**](https://github.com/OzgurBulum/unity-2d-platformer-c
 - [x] Health system
 - [x] Hazards
 - [x] HUD/UI (event-driven)
+- [x] Moving platforms
+- [x] Checkpoint system
+- [x] Finish flag with coin requirement
+- [x] Fall detection
+
+**Game Flow:**
+- [x] Main menu screen
+- [x] Game over screen
+- [x] Level completion screen
+- [x] Scene management
 
 **Polish:**
 - [x] Sound effects (jump, coin, hit)
 - [x] Particle effects (VFX)
-- [x] Damage feedback (flash effect)
-- [x] Basic level design
+- [x] Damage feedback (flash + invincibility)
+- [x] Parallax background (5 layers)
+- [x] Level design
 
 **Mobile:**
 - [x] Android build support
+- [x] iOS build support
 - [x] Touch controls
 - [x] Platform detection
 - [x] Responsive UI
@@ -170,42 +213,16 @@ Check out the [**Releases**](https://github.com/OzgurBulum/unity-2d-platformer-c
 
 ## 🔮 Future Improvements
 
-_This project focused on core 2D platformer mechanics as a learning exercise. The following features could be added in future iterations but are currently out of scope:_
-
-- [ ] Character sprite animation (currently uses sprite flipping only)
-- [ ] Multiple levels/scenes
+- [x] Main menu system ✅
+- [x] Game over/restart flow ✅
+- [x] Multiple scenes (MainMenu + Game) ✅
+- [ ] Character sprite animation
+- [ ] More levels
 - [ ] Power-up system
-- [ ] Advanced level design with complex layouts
-- [ ] Main menu system
-- [ ] Game over/restart flow
-
-## 📱 Mobile Checkpoint
-
-**Android Build - April 2026**
-
-**✅ Completed:**
-- Android Build Support configured (Unity Hub)
-- APK generated (`com.freedxdev.platformer`)
-- Touch controls implemented (LEFT, RIGHT, JUMP buttons)
-- Canvas Scaler configured (Scale With Screen Size, 1920x1080)
-- Landscape orientation locked
-- Platform detection (buttons visible on mobile only, hidden on PC)
-- Input System integration (keyboard + touch working simultaneously)
-- Pause/Resume tested
-- Profiler snapshot analyzed (CPU/Memory stable)
-- **Real device testing completed** - APK tested on Android device
-
-**Mobile Controls:**
-- Touch LEFT button → Move left
-- Touch RIGHT button → Move right
-- Touch JUMP button → Jump (variable height based on hold duration)
-- PC keyboard controls remain functional for testing
-
-**Technical Implementation:**
-- `MobileInputHandler.cs` - Touch input handling (IPointerDown/IPointerUp)
-- `PlatformDetection.cs` - Runtime platform detection
-- `PlayerMovement.cs` - Unified input system (keyboard + touch)
-- Mobile buttons scale with screen size (1920x1080 reference)
+- [ ] Save/load system
+- [ ] Advanced enemy AI (chase, attack patterns)
+- [ ] Background music
+- [ ] Leaderboard / high score system
 
 ## 📝 License
 
