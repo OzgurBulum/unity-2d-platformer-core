@@ -37,7 +37,7 @@ public class EnemyPatrol : MonoBehaviour
             float playerY = collision.gameObject.transform.position.y;
             float enemyY = transform.position.y;
 
-            if (playerY > enemyY + 0.5f)
+            if (playerY > enemyY + 1f)
             {
                 Debug.Log("Enemy stomped!");
                 Destroy(gameObject);

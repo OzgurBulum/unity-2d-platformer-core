@@ -50,7 +50,13 @@ public class PlayerHealth : MonoBehaviour
     private void Die()
     {
         OnPlayerDied?.Invoke();
-        Destroy(gameObject);
+
+        currentHealth = maxHealth;
+        OnHealthChanged?.Invoke(currentHealth);
+
+
+        Vector3 spawnPos = CheckpointManager.Instance.GetSpawnPosition();
+        transform.position = spawnPos;
     }
 
     private IEnumerator DamageFlash()

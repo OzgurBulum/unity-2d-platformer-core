@@ -57,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
 
         moveInput = controls.GamePlay.Move.ReadValue<Vector2>();
 
-        if (controls.GamePlay.Jump.triggered)
+        if (controls.GamePlay.Jump.WasPressedThisFrame())
         {
             jumpBufferCounter = jumpBufferTime;
         }
@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
             jumpBufferCounter -= Time.deltaTime;
         }
 
-        // Keyboard jump cut
+        
         if (controls.GamePlay.Jump.WasReleasedThisFrame() && rb.linearVelocity.y > 0)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpCutMultiplier);
@@ -110,9 +110,17 @@ public class PlayerMovement : MonoBehaviour
 
     void CheckGround()
     {
-        RaycastHit2D hit = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
-        isGrounded = hit.collider != null;
+        float checkWidth = 0.3f;
+    
+        RaycastHit2D hitCenter = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
+        RaycastHit2D hitLeft = Physics2D.Raycast(groundCheck.position + Vector3.left * checkWidth, Vector2.down, groundCheckDistance, groundLayer);
+        RaycastHit2D hitRight = Physics2D.Raycast(groundCheck.position + Vector3.right * checkWidth, Vector2.down, groundCheckDistance, groundLayer);
+    
+        isGrounded = hitCenter.collider != null || hitLeft.collider != null || hitRight.collider != null;
+    
         Debug.DrawRay(groundCheck.position, Vector2.down * groundCheckDistance, isGrounded ? Color.green : Color.red);
+        Debug.DrawRay(groundCheck.position + Vector3.left * checkWidth, Vector2.down * groundCheckDistance, Color.yellow);
+        Debug.DrawRay(groundCheck.position + Vector3.right * checkWidth, Vector2.down * groundCheckDistance, Color.yellow);
     }
 
     public void SetMobileLeft(bool value)
